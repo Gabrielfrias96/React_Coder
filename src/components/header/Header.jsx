@@ -1,4 +1,5 @@
 import "./Header-style.scss"
+import { Button } from '@mui/material';
 
 export function Header(){
     return (
@@ -10,7 +11,8 @@ export function Header(){
                 <h1>Electron</h1>
             </div>
             <div className="session">
-                <p>Iniciar Secion | Registrarme</p>
+                <Button variant="outlined">Iniciar Sesion</Button>
+                <Button variant="outlined">Registrarme</Button>
             </div>
         </div>
     )

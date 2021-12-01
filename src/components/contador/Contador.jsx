@@ -1,3 +1,5 @@
+import { Box } from "@mui/system"
+
 
 
 export function Contador(){
@@ -5,9 +7,9 @@ export function Contador(){
     
 
     return (
-        <div>
+        <Box m={4} sx={{ textAlign: 'center' }}>
             <h1>Tienda</h1>
             <hr/>
-        </div>
+        </Box>
     )
 }

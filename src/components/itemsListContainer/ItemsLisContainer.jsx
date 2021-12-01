@@ -1,7 +1,8 @@
-import { Container, Button, Card , CardActions, CardContent, CardMedia, Typography } from '@mui/material';
+import { Container, Box, Button, Card , CardActions, CardContent, CardMedia, Typography, CircularProgress } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { useEffect , useState } from 'react';
 import { pedirDatos } from '../../helpers/pedirDatos';
+import loading from "./loading-25.gif"
 
 
 
@@ -26,13 +27,15 @@ export function ItemsListContainer(){
 
 
     return (
-        <Container>
+        <Container maxWidth="lg">
             { load 
-            ? "Cargando.." 
+            ? <Box sx={{textAlign:"center"}}>
+                <CircularProgress/>
+            </Box>
             : <>
-                <Grid container m={3} spacing={2}>
+                <Grid container m={3} spacing={3}>
                     {productos.map((prod)=>(
-                        <Grid item  xs={6} key={prod.id}>
+                        <Grid item  xs={4} key={prod.id}>
                             <Card sx={{ maxWidth: 345 }}>
                                 <CardMedia
                                     component="img"
@@ -55,23 +58,9 @@ export function ItemsListContainer(){
                                 </Card>
                         </Grid>
                     ))}
-                    
-
-                    
-                    
-                    
-                    
-
                 </Grid>
-
-                
-            
             </>
-
-            
-            
             }
-
         </Container>
         
     )

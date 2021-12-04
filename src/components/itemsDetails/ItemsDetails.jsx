@@ -4,11 +4,11 @@ import {useState, useEffect} from "react"
 import {useParams} from "react-router"
 import {pedirDatos} from "../../helpers/pedirDatos"
 import { ContainerItemsDetail } from "../containerItemsDetails/ContainerItemsDetails"
+
 import "./item-detail.scss"
 
 
 export function ItemsDetails(){
-
     const [value, setValue] = useState(2);
     const [producto, setProducto] = useState({})
     const {itemId} = useParams()

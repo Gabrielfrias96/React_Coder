@@ -1,7 +1,7 @@
 import { Container, Box, Card , CardContent, CardMedia, Typography, CircularProgress } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import { Link } from "react-router-dom"
-import { useEffect , useState } from 'react';
+import { Link  } from "react-router-dom"
+import { useEffect , useState} from 'react';
 import { pedirDatos } from '../../helpers/pedirDatos';
 import "./items-style.scss"
 
@@ -9,7 +9,7 @@ import "./items-style.scss"
 
 
 export function ItemsListContainer(){
-
+    
     const [load, setload] = useState(true)
     const [productos, setProductos] = useState([])
 
@@ -28,7 +28,8 @@ export function ItemsListContainer(){
 
 
     return (
-        <Container maxWidth="lg">
+        <Container 
+        >
             { load 
             ? <Box sx={{textAlign:"center"}}>
                 <CircularProgress/>

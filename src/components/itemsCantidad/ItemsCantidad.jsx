@@ -1,10 +1,10 @@
 import {Button , Box, Paper} from "@mui/material"
 import { useState } from "react"
+import CustomizedSnackbars from "../customizedSnackBar/CustomizedSnackBar"
 
 
 
 export function ItemsCantidad ({producto}){
-    
     const [cantidad , setCantidad] = useState(1)
 
     const handleRestar = () =>{
@@ -40,13 +40,8 @@ export function ItemsCantidad ({producto}){
                 
             </Box>
             {producto.stock > 1 
-            ?   <Button 
-                    variant="contained" 
-                    color="success" 
-                    sx={{width:"100%", marginTop:"15px"}}
-                    >
-                        Agregar al Carrito
-                </Button>
+            ?   <CustomizedSnackbars producto={producto} />
+
             :   <Button 
                     variant="contained" 
                     color="success" 

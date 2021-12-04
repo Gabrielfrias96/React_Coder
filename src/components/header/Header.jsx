@@ -1,5 +1,5 @@
 import "./Header-style.scss"
-import { Button , InputBase  } from '@mui/material';
+import { Button , InputBase, Typography } from '@mui/material';
 import { Link } from "react-router-dom"
 
 export function Header(){
@@ -13,7 +13,11 @@ export function Header(){
                 />
             </div>
             <div className="title">
-                <Link to="/"><h1>Electron</h1></Link>
+                <Link to="/">
+                    <Typography variant="h4" component="h1">
+                        Electron
+                    </Typography>
+                </Link>
             </div>
             <div className="session">
                 <Button className="btn-sesion" variant="contained" disableElevation>Iniciar Sesion</Button>

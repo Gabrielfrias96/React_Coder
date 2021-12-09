@@ -3,18 +3,38 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import { useContext } from 'react';
+import { CartContext } from "../../context/MiContext";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export default function CustomizedSnackbars({producto}) {
+export default function CustomizedSnackbars(props) {
+
+  const {carrito, addCarrito} = useContext(CartContext);
+
+
+
+  const idProduct = props.producto.id
+  const name = props.producto.nomrbe
+  const img = props.producto.img 
+  const cantidad = props.cantidad
+  const stock = props.producto.stock
+  const price = props.producto.price
+  const newProduct = {id: idProduct , nombre: name, img: img , cantidad: cantidad , stock: stock, precio: price}
+
+
+
+
   const [open, setOpen] = React.useState(false);
 
   const handleClick = () => {
     setOpen(true);
-    console.log(producto)
-    setTimeout(() =>{setOpen(false)}, 2500)
+    addCarrito(newProduct)
+    setTimeout(() =>{setOpen(false);
+      console.log(carrito)}, 2500);
+    
   };
 
   const handleClose = (event, reason) => {

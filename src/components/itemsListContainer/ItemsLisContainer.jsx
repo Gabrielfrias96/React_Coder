@@ -13,7 +13,6 @@ export function ItemsListContainer(){
     const [load, setload] = useState(true)
     const [productos, setProductos] = useState([])
 
-    console.log(productos)
 
     useEffect(()=>{
         pedirDatos()
@@ -31,7 +30,7 @@ export function ItemsListContainer(){
         <Container 
         >
             { load 
-            ? <Box sx={{textAlign:"center"}}>
+            ? <Box sx={{textAlign:"center", marginTop:"100px"}}>
                 <CircularProgress/>
             </Box>
             : <>
@@ -50,9 +49,22 @@ export function ItemsListContainer(){
                                         <Typography gutterBottom variant="h5" component="div">
                                         {prod.nomrbe}
                                         </Typography>
-                                        <Typography variant="body2" color="text.secondary">
-                                           Precio: $ {prod.price}
-                                        </Typography>
+                                        <Box 
+                                        sx={{display: 'flex',justifyContent:"space-between"}}
+                                        >
+                                            <Typography variant="body2" color="text.secondary">
+                                            Precio: $ {prod.price}
+                                            </Typography>
+                                            {
+                                                prod.stock > 0 
+                                                ?   <Typography variant="body2" color="#00a650">
+                                                        ¡Hay Stock!
+                                                    </Typography>
+                                                :   <Typography variant="body2" color="text.secondary">
+                                                        No Hay Stock
+                                                    </Typography>
+                                            }
+                                        </Box>
                                     </CardContent>
                                 </Card>
                             </Link>

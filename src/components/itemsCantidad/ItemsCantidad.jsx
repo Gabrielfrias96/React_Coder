@@ -4,7 +4,11 @@ import CustomizedSnackbars from "../customizedSnackBar/CustomizedSnackBar"
 
 
 
+
+
 export function ItemsCantidad ({producto}){
+
+    
     const [cantidad , setCantidad] = useState(1)
 
     const handleRestar = () =>{
@@ -40,7 +44,7 @@ export function ItemsCantidad ({producto}){
                 
             </Box>
             {producto.stock > 1 
-            ?   <CustomizedSnackbars producto={producto} />
+            ?   <CustomizedSnackbars producto={producto} cantidad={cantidad} />
 
             :   <Button 
                     variant="contained" 

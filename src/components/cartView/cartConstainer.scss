@@ -1,0 +1,19 @@
+.cardCart{
+    margin: 20px 0px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+        .imgCardCart{
+            img{
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .nameCart{
+            width:150px;
+            height: 40px;
+            text-overflow: initial;
+            overflow: hidden;
+        }
+}

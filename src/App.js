@@ -41,9 +41,19 @@ function App() {
 
   // Funcion para Limpiar el carrito
 
+  const limpiarCarrito = () => {
+    setCarrito([])
+  }
+
+  // Total del carrito 
+   
+     const total = carrito.reduce((a,b) => a+ b.precio * b.cantidad ,0)
+      console.log(total)
+   
+
   
   return (
-    <CartContext.Provider value={{carrito, addCarrito}}>
+    <CartContext.Provider value={{carrito, addCarrito, total, limpiarCarrito}}>
       <BrowserRouter>
         <Header/>
           <Routes>

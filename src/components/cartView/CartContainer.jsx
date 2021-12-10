@@ -1,13 +1,14 @@
-import { Grid, Paper, Typography, Divider, Chip } from '@mui/material';
+import { Grid, Paper, Divider, Chip, Button } from '@mui/material';
 import { Box } from '@mui/system';
 import { useContext } from 'react';
 import { CartContext } from '../../context/MiContext'
 import  "./cartConstainer.scss";
+import { DatosBuy } from './DatosBuy';
 
 
 export const CartContainer = () =>{
 
-    const {carrito} = useContext(CartContext)
+    const {carrito, total} = useContext(CartContext)
     console.log(carrito)
 
     return (
@@ -22,10 +23,9 @@ export const CartContainer = () =>{
                     <Grid
                     item
                     md={7}
-                    sx={{display:"flex", justifyContent:"center", alignItems: "center"}}
+                    sx={{display:"flex", justifyContent:"center", alignItems: "start",}}
                     >
-                        Datos del Comprador
-
+                       <DatosBuy/>
                     </Grid>
                     <Grid
                     item
@@ -40,7 +40,7 @@ export const CartContainer = () =>{
                             <Divider>
                                 <Chip label="Mi Compra"/>
                             </Divider>
-                            {carrito.map(prod => (
+                            {carrito.map( prod => (
                                 <Paper elevation={3}>
                                     <div className="cardCart">
                                         <div className="imgCardCart">
@@ -56,9 +56,20 @@ export const CartContainer = () =>{
                                             Precio: {prod.precio}
                                         </div>
                                     </div>
+
+                                        
                                 </Paper>
                             ))}
-                        
+                                        <div className="cartFinaly">
+                                            <div className="final">
+                                                <Button variant="contained" color="success">
+                                                    Finalizar Compra
+                                                </Button>
+                                            </div>
+                                            <div className="total">
+                                                Total: $ {total}
+                                            </div>
+                                        </div>
                         </Paper>
                     </Grid>
                 </Grid>

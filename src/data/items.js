@@ -49,7 +49,7 @@ export const items = [
         price: 24.999,
         stock: 5,
         img: "https://images.fravega.com/f500/0704b9c09bbf63f2f5efd259e18a1dd4.jpg",
-        description: "Remera de verano ideal para ir la pile."
+        description: "No hay descripcion."
     },
     {   id: 8,
         nomrbe: `Tablet Samsung A7 SM-T500 64GB 3GB Gris`,

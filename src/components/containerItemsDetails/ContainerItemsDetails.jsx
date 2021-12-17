@@ -34,7 +34,7 @@ export function ContainerItemsDetail({producto, value, setValue}){
                         alignItems="start"
                         minHeight="100vh">
                             <Paper variant="outlined" sx={{width:"100%", padding:"20px"}} >
-                                <h3>{producto.nomrbe}</h3>
+                                <h3>{producto.nombre}</h3>
                                 <Typography mt={2} component="legend">Califica el Producto</Typography>
                                 <Rating
                                 name="simple-controlled"
@@ -44,7 +44,7 @@ export function ContainerItemsDetail({producto, value, setValue}){
                                 }}
                                 />
                                 <Typography variant="h2" component="h4">
-                                    $ {producto.price}
+                                    $ {producto.precio}
                                 </Typography>
                                 <Typography variant="subtittle1" component="p" color="#B4B49F">
                                         Stock Actual: {producto.stock} Unidades.
@@ -56,7 +56,7 @@ export function ContainerItemsDetail({producto, value, setValue}){
                                     Descripcion:
                                 </Typography>
                                 <Typography variant="subtittle1" component="div">
-                                        {producto.description}
+                                        {producto.descripcion}
                                 </Typography>
 
                                 <ItemsCantidad producto={producto}/>

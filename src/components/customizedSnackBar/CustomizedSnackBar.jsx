@@ -12,16 +12,19 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 export default function CustomizedSnackbars(props) {
 
+
+ // Contexto del Carrito 
+  
   const {carrito, addCarrito} = useContext(CartContext);
 
 
-
+// Se toma la informacion el nuevo Objeto para enviar al Carrito
   const idProduct = props.producto.id
-  const name = props.producto.nomrbe
+  const name = props.producto.nombre
   const img = props.producto.img 
   const cantidad = props.cantidad
   const stock = props.producto.stock
-  const price = props.producto.price
+  const price = props.producto.precio
   const newProduct = {id: idProduct , nombre: name, img: img , cantidad: cantidad , stock: stock, precio: price}
 
 

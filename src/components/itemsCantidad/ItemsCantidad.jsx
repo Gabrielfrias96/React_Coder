@@ -43,7 +43,7 @@ export function ItemsCantidad ({producto}){
                 </Button>
                 
             </Box>
-            {producto.stock > 1 
+            {producto.stock >= 1 
             ?   <CustomizedSnackbars producto={producto} cantidad={cantidad} />
 
             :   <Button 

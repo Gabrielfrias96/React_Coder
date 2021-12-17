@@ -22,7 +22,6 @@ export function Header(){
             </div>
             <div className="session">
                 <Link to="/carrito"><AddShoppingCartIcon/></Link>
-                <Button variant="contained" disableElevation>Registrarme</Button>
             </div>
         </div>
     )

@@ -7,6 +7,7 @@ import { ItemsListContainer } from "./components/itemsListContainer/ItemsLisCont
 import { ItemsDetails } from "./components/itemsDetails/ItemsDetails";
 import {CartContext} from "./context/MiContext"
 import {CartContainer} from "./components/cartView/CartContainer"
+import { Footer } from './components/footer/Footer'
 
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
             <Route path="/detalle/:itemId" element={<ItemsDetails/>}/>
             <Route path="/carrito" element={<CartContainer/>}/>
           </Routes>
+        <Footer/>
       </BrowserRouter>
     </CartContext.Provider>
   );

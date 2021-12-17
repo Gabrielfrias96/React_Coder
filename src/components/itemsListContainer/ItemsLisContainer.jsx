@@ -2,8 +2,9 @@ import { Container, Box, Card , CardContent, CardMedia, Typography, CircularProg
 import Grid from '@mui/material/Grid';
 import { Link  } from "react-router-dom"
 import { useEffect , useState} from 'react';
-import { pedirDatos } from '../../helpers/pedirDatos';
 import "./items-style.scss"
+import {db} from "../../firebase/config"
+import { getDocs, collection } from 'firebase/firestore/lite';
 
 
 
@@ -15,14 +16,21 @@ export function ItemsListContainer(){
 
 
     useEffect(()=>{
-        pedirDatos()
-        .then((res)=>{
-            setProductos(res)
-        })
-        .finally(()=>{
-            setload(false)
-           
-        })
+        // referencia
+        const productosRef = collection(db,`productos`)
+        //GET  a la db
+        setload(true)
+        getDocs(productosRef)
+            .then((results) => {
+                const items = results.docs.map(doc => (
+                    {id: doc.id, ...doc.data()}
+                ))
+
+                setProductos(items)
+                console.log(items)
+            })
+            .finally(setload(false))
+    
     }, [])
 
 
@@ -47,13 +55,13 @@ export function ItemsListContainer(){
                                     />
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="div">
-                                        {prod.nomrbe}
+                                        {prod.nombre}
                                         </Typography>
                                         <Box 
                                         sx={{display: 'flex',justifyContent:"space-between"}}
                                         >
                                             <Typography variant="body2" color="text.secondary">
-                                            Precio: $ {prod.price}
+                                            Precio: $ {prod.precio}
                                             </Typography>
                                             {
                                                 prod.stock > 0 

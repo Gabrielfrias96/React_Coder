@@ -11,3 +11,21 @@ img{
     width:100px;
     height:300px;
 }
+
+
+.filtros{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    .category{
+        background-color: rgba(52, 88, 165, 0.933);
+        padding: 10px;
+
+        a{
+            text-decoration: none;
+            color: white;
+        }
+    }
+}

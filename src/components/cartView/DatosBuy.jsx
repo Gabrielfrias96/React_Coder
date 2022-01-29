@@ -40,7 +40,7 @@ export const DatosBuy = ()=> {
 
     const handleSubmit = async (e) => {
          e.preventDefault()
-         if(validationInput(values) == true) {
+         if(validationInput(values) === true) {
              const venta = {
                  comprador : {...values, },
                  items: {...carrito},
@@ -84,15 +84,19 @@ export const DatosBuy = ()=> {
                 // Se hace update de los stock de los productos
                  batch.commit()
                  // Se registra la venta en la base de datos
-                addDoc(ventasRef, venta);
+                addDoc(ventasRef, venta)
+                .then((res)=> {
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Compra exitosa',
+                        text:`Tu codigo de Orden y Seguimiento es: ${res.id}`,
+                        showConfirmButton: false,
+                        timer: 10500
+                      })
+                });
                 
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Compra exitosa',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
+                
              }
              else { console.log(productosSinStock)}
          }

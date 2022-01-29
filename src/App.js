@@ -59,6 +59,7 @@ function App() {
         <Header/>
           <Routes>
             <Route path="/" element={<ItemsListContainer/>}/>
+            <Route path="/category/:catId" element={<ItemsListContainer/>}/>
             <Route path="/detalle/:itemId" element={<ItemsDetails/>}/>
             <Route path="/carrito" element={<CartContainer/>}/>
           </Routes>

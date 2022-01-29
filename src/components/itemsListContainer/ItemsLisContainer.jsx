@@ -1,6 +1,6 @@
 import { Container, Box, Card , CardContent, CardMedia, Typography, CircularProgress } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import { Link  } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useEffect , useState} from 'react';
 import "./items-style.scss"
 import {db} from "../../firebase/config"
@@ -11,37 +11,59 @@ import { getDocs, collection } from 'firebase/firestore/lite';
 
 export function ItemsListContainer(){
     
-    const [load, setload] = useState(true)
+    const [load, setload] = useState(false)
     const [productos, setProductos] = useState([])
-
+    const {catId} = useParams()
 
     useEffect(()=>{
-        // referencia
+        setTimeout(()=>{
+            // referencia
         const productosRef = collection(db,`productos`)
         //GET  a la db
-        setload(true)
         getDocs(productosRef)
             .then((results) => {
                 const items = results.docs.map(doc => (
                     {id: doc.id, ...doc.data()}
                 ))
 
-                setProductos(items)
-                console.log(items)
+                if (!catId) {
+                    
+                    setProductos(items)
+                }
+                else{ 
+                    setProductos(items.filter(item => item.category === catId))
+                }
+
+                
             })
-            .finally(setload(false))
+            .finally(setload(true))
+        }, 500)
     
-    }, [])
+    }, [catId])
 
 
     return (
         <Container 
         >
-            { load 
-            ? <Box sx={{textAlign:"center", marginTop:"100px"}}>
+            { load === false
+            ? <Box sx={{textAlign:"center", height:"100vh" ,marginTop:"100px"}}>
                 <CircularProgress/>
             </Box>
             : <>
+                <div className="filtros">
+                <div className="category">
+                    <Link to="/category/monitores">Monitores</Link>
+                </div>
+                <div className="category">
+                    <Link to="/category/notebooks">Notebooks</Link>
+                </div>
+                <div className="category">
+                    <Link to="/category/tablets">Tablet's</Link>
+                </div>
+                <div className="category">
+                    <Link to="/category/otros">Otros</Link>
+                </div>
+                </div>
                 <Grid container m={3} spacing={3}>
                     {productos.map((prod)=>(
                         <Grid item  xs={4} key={prod.id}>

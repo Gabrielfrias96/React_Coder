@@ -1,4 +1,5 @@
-import { Grid, Paper, Divider, Chip, Typography } from '@mui/material';
+import { Grid , Button ,  Paper, Divider, Chip, Typography } from '@mui/material';
+import {Link} from 'react-router-dom'
 import { Box } from '@mui/system';
 import { useContext } from 'react';
 import { CartContext } from '../../context/MiContext'
@@ -14,11 +15,16 @@ export const CartContainer = () =>{
     return (
         
             carrito.length === 0 
-              ? <>
-                    <Typography variant="h4" content="div" sx={{textAlign:"center" , marginTop:"100px"}}>
+              ? <Box
+              sx={{textAlign:"center", height:"100vh"}}>
+                    <Typography variant="h4" content="div" sx={{textAlign:"center" , marginTop:"100px", marginBottom:"25px"}}>
                     No hay productos en el carrito
                     </Typography> 
-                </>
+                    <Link to="/">
+                        <Button variant="contained">Volver a la Tienda</Button>
+                    </Link>
+
+                </Box>
               : <Box
               sx={{width:"100%"}}
               >
